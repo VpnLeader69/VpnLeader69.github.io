@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wild Weston - Create Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="create_account.html">Create Account</a></li>
+            <li><a href="support.html">Support</a></li>
+            <li><a href="store.html">Store</a></li>
+        </ul>
+    </nav>
+
+    <div class="login-container">
+        <h1>Create Account</h1>
+        <form action="/create_account" method="POST"> <!-- Updated form action -->
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <button type="submit" class="login-btn">Create Account</button>
+        </form>
+        <p class="register-link">Already have an account? <a href="login.html">Login</a></p>
+    </div>
+
+    <footer class="footer-bar">
+        <p>&copy; 2024 Wild Weston. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
