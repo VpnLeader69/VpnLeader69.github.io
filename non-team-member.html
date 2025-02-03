@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Kernal Crusaders</title>
+    <style>
+        body {
+            background: url('https://wallpapercave.com/wp/wp6275987.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            font-family: 'Burbank Big Condensed', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            height: 100vh;
+        }
+        /* Full-screen black shade */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Dark overlay */
+            z-index: 1;
+        }
+        .container {
+            padding: 50px;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 3.5em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #f3f3f3;
+        }
+        form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 100%;
+            text-align: left;
+        }
+        label, input, textarea {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        input, textarea {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .submit-btn {
+            background: #ff00ff;
+            border: none;
+            padding: 10px;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 1.1em;
+        }
+        .submit-btn:hover {
+            background: #d400d4;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2.5em;
+            }
+            .submit-btn {
+                font-size: 1.2em;
+                padding: 12px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+            .submit-btn {
+                font-size: 1.1em;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Join Kernal Crusaders</h1>
+        <p>Fill out the form below to apply for the squad!</p>
+        <form action="mailto:vpnddnss@gmail.com" method="post" enctype="text/plain">
+            <label for="name">EpicName:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="rank">Rank:</label>
+            <input type="text" id="rank" name="rank" required>
+
+            <label for="play-time">How Long Have You Played (e.g., 2 years, 6 months)?</label>
+            <input type="text" id="play-time" name="play-time" required>
+
+            <label for="message">Tell Us About Your Player History & Tactics & Most Played Game Mode:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

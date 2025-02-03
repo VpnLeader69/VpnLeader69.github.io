@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Area - Kernal Crusaders</title>
+    <style>
+        body {
+            background: url('https://wallpapercave.com/wp/wp6275987.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            height: 100vh;
+        }
+
+        /* Full-screen dark overlay */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .container {
+            padding: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 3em;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #FF6F00;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #f3f3f3;
+            margin-bottom: 30px;
+        }
+
+        .logout-btn {
+            background: #FF6F00;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.3em;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .logout-btn:hover {
+            background: #FF4500;
+        }
+
+        .member-info {
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #FF6F00;
+            box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.6);
+            display: inline-block;
+        }
+
+        .member-info h3 {
+            color: #FF6F00;
+        }
+
+        .member-info p {
+            font-size: 1.2em;
+            color: #f3f3f3;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 1200px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .logout-btn {
+                font-size: 1.2em;
+                padding: 12px 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em;
+            }
+            .logout-btn {
+                font-size: 1.1em;
+                padding: 10px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+            .logout-btn {
+                font-size: 1em;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Member Area!</h1>
+        <p>Congratulations, you are now part of the Kernal Crusaders squad.</p>
+
+        <!-- Team Member Information -->
+        <div class="member-info">
+            <h3>Team Member Details</h3>
+            <p><strong>Member Name:</strong> John Doe</p>
+            <p><strong>Join Date:</strong> January 15, 2024</p>
+            <p><strong>Rank:</strong> Squad Leader</p>
+        </div>
+
+        <!-- Logout Button -->
+        <a href="index.html" class="logout-btn">Logout</a>
+    </div>
+</body>
+</html>
