@@ -43,6 +43,65 @@
             margin-bottom: 20px;
         }
 
+        p {
+            font-size: 1.3em;
+            color: #f3f3f3;
+            margin-bottom: 30px;
+        }
+
+        .join-btn, .login-btn {
+            background: #FF6F00;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.3em;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 50px;
+            margin-right: 10px; /* Space between buttons */
+        }
+
+        .join-btn:hover, .login-btn:hover {
+            background: #FF4500;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            padding: 0 15px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            width: 300px;
+            border-radius: 10px;
+            border: 2px solid #FF6F00;
+            box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.6);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            color: #FF6F00;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 1.1em;
+            color: #f3f3f3;
+        }
+
+        /* Member Section */
         .members-section {
             margin-top: 40px;
             background: rgba(0, 0, 0, 0.8);
@@ -75,28 +134,49 @@
             font-weight: bold;
         }
 
-        .member-form {
-            margin-top: 20px;
+        /* Media Queries for Responsiveness */
+        @media (max-width: 1200px) {
+            h1 {
+                font-size: 3.2em;
+            }
+            .join-btn, .login-btn {
+                font-size: 1.2em;
+                padding: 12px 25px;
+            }
         }
 
-        input, select, button {
-            padding: 10px;
-            margin: 5px;
-            border-radius: 5px;
-            border: none;
-            font-size: 1em;
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .join-btn, .login-btn {
+                font-size: 1.1em;
+                padding: 10px 20px;
+            }
+            .card-container {
+                justify-content: center;
+            }
+            .card {
+                width: 80%;
+            }
         }
 
-        button {
-            background: #FF6F00;
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        button:hover {
-            background: #FF4500;
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+            .join-btn, .login-btn {
+                font-size: 1em;
+                padding: 8px 15px;
+            }
+            .card {
+                width: 90%;
+                margin: 10px 0;
+            }
+            .card-container {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -105,8 +185,31 @@
         <h1>Kernal Crusaders</h1>
         <p>Join the ultimate Fortnite squad</p>
 
+        <!-- Join and Login Buttons -->
+        <a href="non-team-member.html" class="join-btn">Join Now</a>
+        <a href="login.html" class="login-btn">Login</a>
+
+        <div class="card-container">
+            <div class="card">
+                <h2>Advanced Tactics</h2>
+                <p>Strong, Smart, and Ethical Strategies.</p>
+            </div>
+
+            <div class="card">
+                <h2>Exclusive Skins</h2>
+                <p>Unlock rare and legendary skins for squad members.</p>
+            </div>
+
+            <div class="card">
+                <h2>Battle Royale Domination</h2>
+                <p>Compete in high-stakes tournaments and conquer the competition.</p>
+            </div>
+        </div>
+
+        <!-- Member Section -->
         <div class="members-section">
-            <h2>Squad Members (Max: 4)</h2>
+            <h2>Current Squad Members</h2>
+            <p><strong>Total Members:</strong> <span id="member-count">3</span> / 4</p>
             <table>
                 <thead>
                     <tr>
@@ -115,63 +218,25 @@
                         <th>Epic Name</th>
                     </tr>
                 </thead>
-                <tbody id="member-list"></tbody>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Captain</td>
+                        <td>ShadowNinjaX</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Elite</td>
+                        <td>BlazeHunter</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Pro</td>
+                        <td>GhostStriker</td>
+                    </tr>
+                </tbody>
             </table>
-
-            <div class="member-form">
-                <h3>Add Yourself to the Squad</h3>
-                <input type="text" id="epicName" placeholder="Enter your Epic Name" required>
-                <select id="rank">
-                    <option value="Captain">Captain</option>
-                    <option value="Elite">Elite</option>
-                    <option value="Pro">Pro</option>
-                    <option value="Warrior">Warrior</option>
-                </select>
-                <button onclick="addMember()">Join Squad</button>
-            </div>
         </div>
     </div>
-
-    <script>
-        const MAX_MEMBERS = 4;
-        const members = [
-            { rank: "Captain", epicName: "ShadowNinjaX" },
-            { rank: "Elite", epicName: "BlazeHunter" }
-        ];
-
-        function loadMembers() {
-            const tableBody = document.getElementById("member-list");
-            tableBody.innerHTML = "";
-            members.forEach((member, index) => {
-                const row = `<tr>
-                    <td>${index + 1}</td>
-                    <td>${member.rank}</td>
-                    <td>${member.epicName}</td>
-                </tr>`;
-                tableBody.innerHTML += row;
-            });
-        }
-
-        function addMember() {
-            if (members.length >= MAX_MEMBERS) {
-                alert("Squad is full! Maximum of 4 members allowed.");
-                return;
-            }
-
-            const epicName = document.getElementById("epicName").value.trim();
-            const rank = document.getElementById("rank").value;
-
-            if (epicName === "") {
-                alert("Enter your Epic Name!");
-                return;
-            }
-
-            members.push({ rank, epicName });
-            loadMembers();
-            document.getElementById("epicName").value = "";
-        }
-
-        document.addEventListener("DOMContentLoaded", loadMembers);
-    </script>
 </body>
 </html>
