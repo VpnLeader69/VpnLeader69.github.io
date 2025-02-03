@@ -49,7 +49,7 @@
             margin-bottom: 30px;
         }
 
-        .join-btn, .login-btn {
+        .join-btn, .login-btn, .discord-btn {
             background: #FF6F00;
             border: none;
             padding: 12px 25px;
@@ -64,7 +64,7 @@
             margin-right: 10px; /* Space between buttons */
         }
 
-        .join-btn:hover, .login-btn:hover {
+        .join-btn:hover, .login-btn:hover, .discord-btn:hover {
             background: #FF4500;
         }
 
@@ -139,7 +139,7 @@
             h1 {
                 font-size: 3.2em;
             }
-            .join-btn, .login-btn {
+            .join-btn, .login-btn, .discord-btn {
                 font-size: 1.2em;
                 padding: 12px 25px;
             }
@@ -149,7 +149,7 @@
             h1 {
                 font-size: 2.5em;
             }
-            .join-btn, .login-btn {
+            .join-btn, .login-btn, .discord-btn {
                 font-size: 1.1em;
                 padding: 10px 20px;
             }
@@ -165,7 +165,7 @@
             h1 {
                 font-size: 2em;
             }
-            .join-btn, .login-btn {
+            .join-btn, .login-btn, .discord-btn {
                 font-size: 1em;
                 padding: 8px 15px;
             }
@@ -178,6 +178,13 @@
                 align-items: center;
             }
         }
+
+        .discord-icon {
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
     </style>
 </head>
 <body>
@@ -188,6 +195,11 @@
         <!-- Join and Login Buttons -->
         <a href="non-team-member.html" class="join-btn">Join Now</a>
         <a href="login.html" class="login-btn">Login</a>
+
+        <!-- Discord Button -->
+        <a href="https://discord.gg/YOUR_DISCORD_INVITE" class="discord-btn" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Discord_logo.svg" alt="Discord Icon" class="discord-icon"> Join Discord
+        </a>
 
         <div class="card-container">
             <div class="card">
