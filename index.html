@@ -61,7 +61,7 @@
             text-decoration: none;
             display: inline-block;
             margin-bottom: 50px;
-            margin-right: 10px; /* Space between buttons */
+            margin-right: 10px;
         }
 
         .join-btn:hover, .login-btn:hover {
@@ -101,49 +101,78 @@
             color: #f3f3f3;
         }
 
-        /* Media Queries for Responsiveness */
-        @media (max-width: 1200px) {
-            h1 {
-                font-size: 3.2em;
-            }
-            .join-btn, .login-btn {
-                font-size: 1.2em;
-                padding: 12px 25px;
-            }
+        .members-section {
+            margin-top: 40px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #FF6F00;
+            box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.6);
+            width: 90%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5em;
-            }
-            .join-btn, .login-btn {
-                font-size: 1.1em;
-                padding: 10px 20px;
-            }
-            .card-container {
-                justify-content: center;
-            }
-            .card {
-                width: 80%;
-            }
+        .members-section h2, .member-form h3 {
+            color: #FF6F00;
+            margin-bottom: 10px;
         }
 
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2em;
-            }
-            .join-btn, .login-btn {
-                font-size: 1em;
-                padding: 8px 15px;
-            }
-            .card {
-                width: 90%;
-                margin: 10px 0;
-            }
-            .card-container {
-                flex-direction: column;
-                align-items: center;
-            }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: white;
+        }
+
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #FF6F00;
+            text-align: center;
+        }
+
+        th {
+            background: rgba(255, 111, 0, 0.3);
+            color: #FF6F00;
+            font-weight: bold;
+        }
+
+        tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        tbody tr:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .member-form {
+            margin-top: 20px;
+        }
+
+        input, select, button {
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1em;
+        }
+
+        input, select {
+            width: 80%;
+            max-width: 300px;
+        }
+
+        button {
+            background: #FF6F00;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #FF4500;
         }
     </style>
 </head>
@@ -152,28 +181,82 @@
         <h1>Kernal Crusaders</h1>
         <p>Join the ultimate Fortnite squad</p>
 
-        <!-- Join and Login Buttons -->
         <a href="non-team-member.html" class="join-btn">Join Now</a>
         <a href="login.html" class="login-btn">Login</a>
 
         <div class="card-container">
             <div class="card">
                 <h2>Advanced Tactics</h2>
-                <p>Strong Smart An Ethical Strategies.</p>
+                <p>Strong, Smart, and Ethical Strategies.</p>
             </div>
-
             <div class="card">
-                <h2>Perks Of Our Team</h2>
-                <p>Vbucks Giveaways 
-                 Gifts 
-                 Cash Prizes.</p>
+                <h2>Exclusive Skins</h2>
+                <p>Unlock rare and legendary skins for squad members.</p>
             </div>
-
             <div class="card">
                 <h2>Battle Royale Domination</h2>
                 <p>Compete in high-stakes tournaments and conquer the competition.</p>
             </div>
         </div>
+
+        <div class="members-section">
+            <h2>Squad Members</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Rank</th>
+                        <th>Epic Name</th>
+                    </tr>
+                </thead>
+                <tbody id="member-list"></tbody>
+            </table>
+
+            <div class="member-form">
+                <h3>Add Yourself to the Squad</h3>
+                <input type="text" id="epicName" placeholder="Enter your Epic Name" required>
+                <select id="rank">
+                    <option value="Captain">Captain</option>
+                    <option value="Elite">Elite</option>
+                    <option value="Pro">Pro</option>
+                    <option value="Warrior">Warrior</option>
+                </select>
+                <button onclick="addMember()">Join Squad</button>
+            </div>
+        </div>
     </div>
+
+    <script>
+        const members = [
+            { rank: "Captain", epicName: "ShadowNinjaX" },
+            { rank: "Elite", epicName: "BlazeHunter" },
+            { rank: "Pro", epicName: "GhostSniper" },
+            { rank: "Warrior", epicName: "NightStorm" }
+        ];
+
+        function loadMembers() {
+            const tableBody = document.getElementById("member-list");
+            tableBody.innerHTML = "";
+            members.forEach((member, index) => {
+                const row = `<tr>
+                    <td>${index + 1}</td>
+                    <td>${member.rank}</td>
+                    <td>${member.epicName}</td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        function addMember() {
+            const epicName = document.getElementById("epicName").value.trim();
+            const rank = document.getElementById("rank").value;
+            if (epicName === "") return alert("Enter your Epic Name!");
+            members.push({ rank, epicName });
+            loadMembers();
+            document.getElementById("epicName").value = "";
+        }
+
+        document.addEventListener("DOMContentLoaded", loadMembers);
+    </script>
 </body>
 </html>
