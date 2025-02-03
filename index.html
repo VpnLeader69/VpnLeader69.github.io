@@ -43,64 +43,6 @@
             margin-bottom: 20px;
         }
 
-        p {
-            font-size: 1.3em;
-            color: #f3f3f3;
-            margin-bottom: 30px;
-        }
-
-        .join-btn, .login-btn {
-            background: #FF6F00;
-            border: none;
-            padding: 12px 25px;
-            font-size: 1.3em;
-            color: white;
-            cursor: pointer;
-            transition: 0.3s;
-            border-radius: 8px;
-            text-decoration: none;
-            display: inline-block;
-            margin-bottom: 50px;
-            margin-right: 10px;
-        }
-
-        .join-btn:hover, .login-btn:hover {
-            background: #FF4500;
-        }
-
-        .card-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 25px;
-            padding: 0 15px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 25px;
-            width: 300px;
-            border-radius: 10px;
-            border: 2px solid #FF6F00;
-            box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.6);
-            text-align: left;
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h2 {
-            color: #FF6F00;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            font-size: 1.1em;
-            color: #f3f3f3;
-        }
-
         .members-section {
             margin-top: 40px;
             background: rgba(0, 0, 0, 0.8);
@@ -113,11 +55,6 @@
             margin-left: auto;
             margin-right: auto;
             text-align: center;
-        }
-
-        .members-section h2, .member-form h3 {
-            color: #FF6F00;
-            margin-bottom: 10px;
         }
 
         table {
@@ -138,14 +75,6 @@
             font-weight: bold;
         }
 
-        tbody tr:nth-child(even) {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        tbody tr:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
         .member-form {
             margin-top: 20px;
         }
@@ -156,11 +85,6 @@
             border-radius: 5px;
             border: none;
             font-size: 1em;
-        }
-
-        input, select {
-            width: 80%;
-            max-width: 300px;
         }
 
         button {
@@ -181,26 +105,8 @@
         <h1>Kernal Crusaders</h1>
         <p>Join the ultimate Fortnite squad</p>
 
-        <a href="non-team-member.html" class="join-btn">Join Now</a>
-        <a href="login.html" class="login-btn">Login</a>
-
-        <div class="card-container">
-            <div class="card">
-                <h2>Advanced Tactics</h2>
-                <p>Strong, Smart, and Ethical Strategies.</p>
-            </div>
-            <div class="card">
-                <h2>Exclusive Skins</h2>
-                <p>Unlock rare and legendary skins for squad members.</p>
-            </div>
-            <div class="card">
-                <h2>Battle Royale Domination</h2>
-                <p>Compete in high-stakes tournaments and conquer the competition.</p>
-            </div>
-        </div>
-
         <div class="members-section">
-            <h2>Squad Members</h2>
+            <h2>Squad Members (Max: 4)</h2>
             <table>
                 <thead>
                     <tr>
@@ -227,11 +133,10 @@
     </div>
 
     <script>
+        const MAX_MEMBERS = 4;
         const members = [
             { rank: "Captain", epicName: "ShadowNinjaX" },
-            { rank: "Elite", epicName: "BlazeHunter" },
-            { rank: "Pro", epicName: "GhostSniper" },
-            { rank: "Warrior", epicName: "NightStorm" }
+            { rank: "Elite", epicName: "BlazeHunter" }
         ];
 
         function loadMembers() {
@@ -248,9 +153,19 @@
         }
 
         function addMember() {
+            if (members.length >= MAX_MEMBERS) {
+                alert("Squad is full! Maximum of 4 members allowed.");
+                return;
+            }
+
             const epicName = document.getElementById("epicName").value.trim();
             const rank = document.getElementById("rank").value;
-            if (epicName === "") return alert("Enter your Epic Name!");
+
+            if (epicName === "") {
+                alert("Enter your Epic Name!");
+                return;
+            }
+
             members.push({ rank, epicName });
             loadMembers();
             document.getElementById("epicName").value = "";
